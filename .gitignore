@@ -1,0 +1,14 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# C# stuff
+nupkg/
+
+coverage/*
+!coverage/.gdignore
+
+bin/
+obj/
+.generated/
+.vs/

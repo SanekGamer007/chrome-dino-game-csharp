@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckyoflbx1is53"]
+
+[ext_resource type="Texture2D" uid="uid://co7g8wa6oyaxb" path="res://entities/dino/dino.png" id="1_tjusf"]
+[ext_resource type="Script" uid="uid://b2nl875ejj838" path="res://entities/dino/Dino.cs" id="1_y6ip1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6ip1"]
+size = Vector2(13, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uykqg"]
+atlas = ExtResource("1_tjusf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0c6r"]
+atlas = ExtResource("1_tjusf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6yrts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uykqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0c6r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Dino" type="CharacterBody2D"]
+script = ExtResource("1_y6ip1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_y6ip1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1.4301453, 1.2940211, 1.2012092, 1)
+sprite_frames = SubResource("SpriteFrames_6yrts")
+autoplay = "default"
+frame_progress = 0.9234625
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="HitBox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_y6ip1")
+debug_color = Color(0.9544777, 0.12254127, 0.44800627, 0.41960785)
+
+[connection signal="area_entered" from="Area2D" to="." method="OnArea2DAreaEntered"]

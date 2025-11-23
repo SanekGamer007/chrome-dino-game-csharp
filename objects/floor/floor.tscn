@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3fn3fp61hv6k"]
+
+[ext_resource type="Script" uid="uid://dn2q4b5yqieaf" path="res://objects/floor/Floor.cs" id="1_1nha2"]
+[ext_resource type="Texture2D" uid="uid://jiaj5ovtv887" path="res://objects/floor/sprite.png" id="1_eaetx"]
+
+[node name="floor" type="Parallax2D"]
+repeat_size = Vector2(120, 0)
+autoscroll = Vector2(-40, 0)
+repeat_times = 5
+script = ExtResource("1_1nha2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_eaetx")
