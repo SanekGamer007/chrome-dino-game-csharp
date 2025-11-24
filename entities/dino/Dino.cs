@@ -26,10 +26,10 @@ public partial class Dino : CharacterBody2D
         switch (CurrentState)
         {
             case States.Alive:
-                _HandleAliveState(delta);
+                HandleAliveState(delta);
                 break; 
             case States.Dead:
-                _HandleDeadState(delta);
+                HandleDeadState(delta);
                 break;
         }
         if (IsOnFloor())
@@ -47,14 +47,14 @@ public partial class Dino : CharacterBody2D
         Velocity = NewVelocity;
         MoveAndSlide();
     }
-    private void _HandleAliveState(double delta)
+    private void HandleAliveState(double delta)
     {
         if (Input.IsActionJustPressed("jump") && IsOnFloor())
         {
             NewVelocity.Y -= JumpPower;
         }
     }
-    private void _HandleDeadState(double delta)
+    private void HandleDeadState(double delta)
     {
         return;
     }
